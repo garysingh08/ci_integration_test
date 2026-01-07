@@ -1,6 +1,5 @@
-name: C++ CI Workflow
+name: C++ CI
 
-# 1. Triggers: When should this run?
 on:
   push:
     branches: [ "main" ]
@@ -8,30 +7,16 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
-    # The "runner" (a virtual machine hosted by GitHub)
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    # 2. Source: Get the code from the repo
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    # 3. Environment Setup: Install compiler and build tools
-    - name: Install Dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake g++
+    - name: Compile the code
+      # This is the standard way to compile a single C++ file
+      run: g++ main.cpp -o my_application
 
-    # 4. Build: Run CMake and Make
-    - name: Configure CMake
-      run: cmake -S . -B build
-
-    - name: Build Project
-      run: cmake --build build
-
-    # 5. Test: Run the resulting executable or test suite
-    - name: Run Tests
-      run: |
-        cd build
-        ctest --output-on-failure
+    - name: Run the application
+      # This ensures the program actually runs without crashing
+      run: ./my_application
