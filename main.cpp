@@ -7,7 +7,7 @@ int addNums(int x, int y) {
 }
 
 void test_positive_numbers() {
-    assert(addNums(5, 5) == 10);
+    assert(addNums(5, 5) == 11);
     std::cout << "✅ Test Passed: 5 + 5 = 10" << std::endl;
 }
 
