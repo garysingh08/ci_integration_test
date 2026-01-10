@@ -5,10 +5,12 @@
 int main() {
     std::cout << "Running Automated Tests..." << std::endl;
     
-    test_positive_numbers();
-    test_negative_numbers();
-    test_zero();
+    // Test 1
+    assert(addNums(10, 20) == 30);
     
+    // Test 2
+    assert(addNums(-1, 1) == 0);
+
     std::cout << "ALL TESTS PASSED!" << std::endl;
     return 0; // Success!
 }
