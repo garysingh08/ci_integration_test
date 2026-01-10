@@ -1,14 +1,33 @@
-#include<iostream>
-using namespace std;
+#include <iostream>
+#include <cassert>
 
-int addNums(int x, int y){
-  return x+y;
-}  
+// The function we are testing
+int addNums(int x, int y) {
+    return x + y;
+}
 
-int main(){
+void test_positive_numbers() {
+    assert(addNums(5, 5) == 10);
+    std::cout << "✅ Test Passed: 5 + 5 = 10" << std::endl;
+}
 
-  cout << "Hi ya" << endl;
-  cout << addNums(2,3) << endl;
+void test_negative_numbers() {
+    assert(addNums(-1, -1) == -2);
+    std::cout << "✅ Test Passed: -1 + -1 = -2" << std::endl;
+}
 
-  return 0;
+void test_zero() {
+    assert(addNums(0, 100) == 100);
+    std::cout << "✅ Test Passed: 0 + 100 = 100" << std::endl;
+}
+
+int main() {
+    std::cout << "Running Automated Tests..." << std::endl;
+    
+    test_positive_numbers();
+    test_negative_numbers();
+    test_zero();
+    
+    std::cout << "ALL TESTS PASSED!" << std::endl;
+    return 0; // Success!
 }
